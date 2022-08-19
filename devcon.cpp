@@ -1034,9 +1034,10 @@ final:
 
 }
 
-int
-__cdecl
-_tmain(_In_ int argc, _In_reads_(argc) PWSTR* argv)
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+    _In_opt_ HINSTANCE hPrevInstance,
+    _In_ LPWSTR    lpCmdLine,
+    _In_ int       nCmdShow)
 /*++
 
 Routine Description:
@@ -1075,6 +1076,9 @@ Return Value:
     // -f            - force operation
     // -u            - unicode output
     //
+
+    int argc = __argc;
+    LPWSTR* argv = __wargv;
 
     baseName = _tcsrchr(argv[0],TEXT('\\'));
     if(!baseName) {
